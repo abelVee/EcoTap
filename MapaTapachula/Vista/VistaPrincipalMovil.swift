@@ -10,6 +10,9 @@ struct VistaPrincipalMovil: View {
     @State private var isShowingNotificacionesView = false
     @State private var isShowingNoticiasView = false
     @State private var isShowingEducacionView = false
+    @State private var isShowingPerfilView = false
+    @State private var isShowingCitaView = false
+    @State private var isShowingReporteView = false
     @State private var currentTitleIndex = 0
     @State private var timer: Timer?
     
@@ -49,13 +52,14 @@ struct VistaPrincipalMovil: View {
                 Notificaciones()
                     .padding(.bottom, 70)
                     .frame(width: 405, height: 900)
+            } else if isShowingCitaView {
+                Cita()
+                    .padding(.bottom, 70)
+                    .frame(width: 405, height: 900)
             } else if isShowingNoticiasView {
                 Noticia()
                     .padding(.bottom, 70)
             } else {
-                
-              
-                
                 NavigationView {
                     VStack {
                         ZStack {
@@ -78,6 +82,12 @@ struct VistaPrincipalMovil: View {
                                         )
                                         .offset(y: 50)
                                         .offset(x: -155)
+                                        .onTapGesture {
+                                            resetAllViews()
+                                            withAnimation{
+                                                isShowingPerfilView = true
+                                            }
+                                        }
                                 }
                                 
                                 Text("ABEL VELAZQUEZ CAMERAS")
@@ -97,7 +107,9 @@ struct VistaPrincipalMovil: View {
                                 Spacer()
                                 Button(action: {
                                     resetAllViews()
-                                    isShowingNotificacionesView = true
+                                    withAnimation{
+                                        isShowingNotificacionesView = true
+                                    }
                                 }) {
                                     Image(systemName: "bell.fill")
                                         .resizable()
@@ -118,7 +130,9 @@ struct VistaPrincipalMovil: View {
                             
                             Button(action: {
                                 resetAllViews()
-                                isShowingEducacionView = true
+                                withAnimation{
+                                    isShowingEducacionView = true
+                                }
                             }) {
                                 Image("RectanguloAprendamos")
                                     .resizable()
@@ -147,7 +161,9 @@ struct VistaPrincipalMovil: View {
                                     VStack {
                                         Button(action: {
                                             resetAllViews()
-                                            isShowingContentView = true
+                                            withAnimation{
+                                                isShowingContentView = true
+                                            }
                                         }) {
                                             ZStack {
                                                 Rectangle()
@@ -171,42 +187,55 @@ struct VistaPrincipalMovil: View {
                                     .offset(x: -25)
                                     
                                     VStack {
-                                        ZStack {
-                                            Rectangle()
-                                                .fill(Color.white)
-                                                .frame(width: 140, height: 180)
-                                                .cornerRadius(15)
-                                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-                                            
-                                            Image("Camion")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 100)
-                                                .foregroundColor(.green)
+                                        Button(action: {
+                                            resetAllViews()
+                                            withAnimation{
+                                                isShowingCitaView = false
+                                            }
+                                        }){
+                                            ZStack {
+                                                Rectangle()
+                                                    .fill(Color.white)
+                                                    .frame(width: 140, height: 180)
+                                                    .cornerRadius(15)
+                                                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                                                
+                                                Image("Camion")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 100)
+                                                    .foregroundColor(.green)
+                                            }
+                                            }
+                                            Text("Recolección")
+                                                .font(.headline)
+                                                .foregroundColor(.gray)
                                         }
-                                        Text("Recolección")
-                                            .font(.headline)
-                                            .foregroundColor(.gray)
-                                    }
                                     .offset(y: -30)
                                     .offset(x: 30)
                                 }
                                 
                                 HStack {
                                     VStack {
-                                        ZStack {
-                                            Rectangle()
-                                                .fill(Color.white)
-                                                .frame(width: 140, height: 180)
-                                                .cornerRadius(15)
-                                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-                                            
-                                            Image("Camara")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 100)
-                                                .foregroundColor(.purple)
-                                        }
+                                        Button(action: {
+                                            resetAllViews()
+                                            withAnimation{
+                                                isShowingReporteView = true
+                                            }
+                                        }){
+                                            ZStack {
+                                                Rectangle()
+                                                    .fill(Color.white)
+                                                    .frame(width: 140, height: 180)
+                                                    .cornerRadius(15)
+                                                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                                                
+                                                Image("Camara")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 100)
+                                                    .foregroundColor(.purple)
+                                            }}
                                         Text("Reporta un \n problema")
                                             .font(.headline)
                                             .foregroundColor(.gray)
@@ -217,7 +246,9 @@ struct VistaPrincipalMovil: View {
                                     VStack {
                                         Button(action: {
                                             resetAllViews()
-                                            isShowingNoticiasView = true
+                                            withAnimation{
+                                                isShowingNoticiasView = true
+                                            }
                                         }) {
                                             ZStack {
                                                 Rectangle()
@@ -278,7 +309,9 @@ struct VistaPrincipalMovil: View {
                         VStack {
                             Button(action: {
                                 resetAllViews()
-                                isShowingPremiosView = true
+                                withAnimation{
+                                    isShowingPremiosView = true
+                                }
                             }) {
                                 Image(systemName: "gift.fill")
                                     .resizable()
@@ -322,7 +355,9 @@ struct VistaPrincipalMovil: View {
                         VStack {
                             Button(action: {
                                 resetAllViews()
-                                isShowingMisionView = true
+                                withAnimation{
+                                    isShowingMisionView = true
+                                }
                             }) {
                                 Image(systemName: "flag.fill")
                                     .resizable()
@@ -340,7 +375,9 @@ struct VistaPrincipalMovil: View {
                         VStack {
                             Button(action: {
                                 resetAllViews()
-                                isShowingScannerView = true
+                                withAnimation{
+                                    isShowingScannerView = true
+                                }
                             }) {
                                 Image(systemName: "qrcode.viewfinder")
                                     .resizable()
@@ -358,6 +395,15 @@ struct VistaPrincipalMovil: View {
                 }
             }
             .frame(height: UIScreen.main.bounds.height)
+            if isShowingPerfilView {
+                Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation{isShowingPerfilView = false}
+                    }
+                PerfilView(imagenPerfil: "PerfilAbel", nombre: "Abel Velazquez Cameras")
+                    .transition(.move(edge: .leading))
+                    .zIndex(1)
+            }
         }
         .onAppear {
             // Animación del botón flotante
@@ -383,6 +429,8 @@ struct VistaPrincipalMovil: View {
     }
     
     private func resetAllViews() {
+        isShowingCitaView = false
+        isShowingPerfilView = false
         isShowingContentView = false
         isShowingAsistenteView = false
         isShowingScannerView = false
@@ -391,6 +439,7 @@ struct VistaPrincipalMovil: View {
         isShowingNotificacionesView = false
         isShowingNoticiasView = false
         isShowingEducacionView = false
+        isShowingReporteView = false
         
         // Detener la animación cuando cambiamos de vista
         stopTitleAnimation()
