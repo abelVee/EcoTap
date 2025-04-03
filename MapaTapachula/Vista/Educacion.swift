@@ -64,7 +64,7 @@ struct Educacion: View {
     let videosEducativos = [
         VideoEducativo(
             titulo: "El viaje del reciclaje",
-            source: .youtube(url: "https://www.youtube.com/watch?v=49-AIY2PvBY", thumbnail: "https://img.youtube.com/vi/49-AIY2PvBY/mqdefault.jpg")
+            source: .youtube(url: "https://www.youtube.com/watch?v=6pdjY0aFY8k", thumbnail: "https://img.youtube.com/vi/6pdjY0aFY8k/mqdefault.jpg")
         ),
         VideoEducativo(
             titulo: "Economía circular explicada",
