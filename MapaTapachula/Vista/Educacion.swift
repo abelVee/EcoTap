@@ -5,27 +5,27 @@ import WebKit
 
 struct Educacion: View {
     let categoriasReciclaje = [
-        CategoriaReciclaje(nombre: "Plástico", imagen: "plastic", color: .blue, consejos: [
+        CategoriaReciclaje(nombre: "Plástico", imagen: "Plastico", color: .blue, consejos: [
             "Lava los envases antes de reciclarlos",
             "Retira las tapas y etiquetas",
             "No recicles plásticos de un solo uso como cubiertos"
         ]),
-        CategoriaReciclaje(nombre: "Vidrio", imagen: "glass", color: .green, consejos: [
+        CategoriaReciclaje(nombre: "Vidrio", imagen: "Vidrio", color: .green, consejos: [
             "Separa por colores si es posible",
             "Retira tapas y corchos",
             "No incluyas cerámica o cristal"
         ]),
-        CategoriaReciclaje(nombre: "Papel", imagen: "paper", color: .yellow, consejos: [
+        CategoriaReciclaje(nombre: "Papel", imagen: "Papel", color: .yellow, consejos: [
             "Retira grapas y clips",
             "No recicles papel sucio o con comida",
             "Compacta las cajas antes de reciclar"
         ]),
-        CategoriaReciclaje(nombre: "Metal", imagen: "metal", color: .gray, consejos: [
+        CategoriaReciclaje(nombre: "Metal", imagen: "Metal", color: .gray, consejos: [
             "Aplasta las latas para ahorrar espacio",
             "Separa aluminio de otros metales",
             "Retira residuos de alimentos"
         ]),
-        CategoriaReciclaje(nombre: "Cartón", imagen: "shippingbox", color: .brown, consejos: [
+        CategoriaReciclaje(nombre: "Cartón", imagen: "Carton", color: .brown, consejos: [
             "Desarma las cajas para ahorrar espacio",
             "Retira cualquier material no cartón (plásticos, cintas)",
             "No recicles cartón con restos de comida o grasa",
@@ -366,10 +366,10 @@ struct CategoriaReciclajeView: View {
                     .fill(categoria.color.opacity(0.2))
                     .frame(width: 70, height: 70)
                 
-                Image(systemName: categoria.imagen)
+                Image(categoria.imagen)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 35, height: 35)
                     .foregroundColor(categoria.color)
             }
             
