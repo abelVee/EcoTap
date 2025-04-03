@@ -84,11 +84,11 @@ struct Cita: View {
                     .shadow(color: .gray, radius: 5)                   .opacity(0.9)
                     .overlay{
                         VStack{
-                            Material(image: "plastico", material: $plastico)
-                            Material(image: "metal", material: $metal)
-                            Material(image: "carton", material: $carton)
-                            Material(image: "vidrio", material: $vidrio)
-                            Material(image: "papel", material: $papel)
+                            Material(image: "Plastico", material: $plastico)
+                            Material(image: "Metal", material: $metal)
+                            Material(image: "Carton", material: $carton)
+                            Material(image: "Vidrio", material: $vidrio)
+                            Material(image: "Papel", material: $papel)
                         }
                     }
                 
@@ -199,16 +199,15 @@ struct Cita: View {
 }
 
 private struct Material: View {
+    @FocusState private var isFocused: Bool
     let image: String
     @Binding var material: Double
     var body: some View {
         HStack{
             Image(image)
-                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 45)
-                .foregroundStyle(.verdeTierno)
+                .frame(width: 35, height: 35)
             UnevenRoundedRectangle(topLeadingRadius: 20, bottomLeadingRadius: 20)
                 .foregroundStyle(.red)
                 .frame(width: 45, height: 35)
@@ -229,6 +228,11 @@ private struct Material: View {
                 .keyboardType(.decimalPad)
                 .multilineTextAlignment(.center)
                 .frame(width: 50, height: 35)
+                .submitLabel(.done)
+                .focused($isFocused)
+                .onSubmit {
+                    isFocused = false
+                }
             
             UnevenRoundedRectangle(bottomTrailingRadius: 20, topTrailingRadius: 20)
                 .foregroundStyle(.verdeTierno)
@@ -245,11 +249,12 @@ private struct Material: View {
                 }
             Text("kg")
                 .font(.custom("Montserrat", size: 20))
-        }
+        }.padding(6)
     }
 }
 
 private struct MultiField: View {
+    @FocusState private var isFocused: Bool
     let title: String
     @Binding var text: String
     let desc: String
@@ -269,6 +274,10 @@ private struct MultiField: View {
                 .shadow(radius: 0)
                 .background(.clear).shadow(radius: 5)
                 .submitLabel(.done)
+                .focused($isFocused)
+                .onSubmit {
+                    isFocused = false
+                }
         }
     }
 }
